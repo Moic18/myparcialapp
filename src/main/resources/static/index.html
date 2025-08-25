@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroTech Airlines</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .banner {
+      margin: 2rem 0;
+    }
+    .banner img {
+      width: 100%;
+      height: auto;
+    }
+    .offer-card { cursor: pointer; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-wrapper blue darken-2">
+    <a href="#" class="brand-logo center">AeroTech Airlines</a>
+    <ul id="nav-mobile" class="right">
+      <li><a href="app.html">Iniciar sesión</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <!-- Buscar / Reservar vuelo -->
+  <div class="search-section white z-depth-1" style="margin-top:20px;padding:20px;">
+    <div class="row" style="margin-bottom:0;">
+      <div class="input-field col s12 m4">
+        <select id="origin-select">
+          <option value="" selected>Origen</option>
+        </select>
+        <label>Origen</label>
+      </div>
+      <div class="input-field col s12 m4">
+        <select id="destination-select">
+          <option value="" selected>Destino</option>
+        </select>
+        <label>Destino</label>
+      </div>
+      <div class="input-field col s12 m4 center">
+        <button id="search-btn" class="btn red">Buscar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Banner publicitario -->
+
+  <!-- Ofertas de vuelos -->
+  <div class="section">
+    <h5>Ofertas de vuelos</h5>
+    <div id="offers" class="row"></div>
+  </div>
+  <!-- Información general -->
+  <div class="section">
+    <h5>Bienvenido</h5>
+    <p>Explora nuestra plataforma para reservar tus próximos vuelos. Descubre destinos increíbles y disfruta de una experiencia de viaje sencilla y segura.</p>
+  </div>
+  <div class="section">
+    <h5>Funciones para clientes</h5>
+    <ul class="collection">
+      <li class="collection-item">Búsqueda de vuelos por origen y destino</li>
+      <li class="collection-item">Reservas en línea y gestión de pasajeros</li>
+      <li class="collection-item">Consulta de estados y detalles de tus vuelos</li>
+    </ul>
+  </div>
+</div>
+<!-- Modal de inicio de sesión -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <h4>Inicia sesión</h4>
+    <p>Debes iniciar sesión para reservar este vuelo.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="app.html" class="modal-close waves-effect waves-green btn">Iniciar sesión</a>
+    <a href="#" class="modal-close waves-effect waves-red btn-flat">Seguir explorando</a>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>

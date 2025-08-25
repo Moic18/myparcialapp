@@ -1,0 +1,411 @@
+{
+  "info": {
+    "name": "myparcialapp API",
+    "description": "Colección de Postman para probar las APIs de myparcialapp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Public",
+      "item": [
+        {
+          "name": "Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/health", "host": ["{{baseUrl}}"], "path": ["api", "health"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/info", "host": ["{{baseUrl}}"], "path": ["api", "info"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Test",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/test", "host": ["{{baseUrl}}"], "path": ["api", "test"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Root",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/", "host": ["{{baseUrl}}"], "path": ["api", ""]}
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"123456\"\n}", "options": {"raw": {"language": "json"}}},
+            "url": {"raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Registrar Usuario",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"secreto\",\n  \"role\": \"CLIENTE\",\n  \"phone\": \"3001234567\"\n}", "options": {"raw": {"language": "json"}}},
+            "url": {"raw": "{{baseUrl}}/api/usuarios", "host": ["{{baseUrl}}"], "path": ["api", "usuarios"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Vuelos",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\n  \"origen\": \"BOG\",\n  \"destino\": \"MDE\",\n  \"fecha\": \"2024-07-01\"\n}", "options": {"raw": {"language": "json"}}},
+            "url": {"raw": "{{baseUrl}}/api/vuelos/buscar", "host": ["{{baseUrl}}"], "path": ["api", "vuelos", "buscar"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Vuelos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/vuelos", "host": ["{{baseUrl}}"], "path": ["api", "vuelos"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Detalle Vuelo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/vuelos/1", "host": ["{{baseUrl}}"], "path": ["api", "vuelos", "1"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Reserva por Código",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/reservas/codigo/ABC123", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "codigo", "ABC123"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Estadísticas Generales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {"raw": "{{baseUrl}}/api/reportes/estadisticas-generales", "host": ["{{baseUrl}}"], "path": ["api", "reportes", "estadisticas-generales"]}
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cliente",
+      "item": [
+        {
+          "name": "Crear Reserva",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\n  \"vueloId\": 1,\n  \"pasajeros\": [\n    {\n      \"nombre\": \"Carlos Pérez\",\n      \"documento\": \"12345678\",\n      \"edad\": 30,\n      \"email\": \"carlos@example.com\",\n      \"telefono\": \"3001234567\"\n    }\n  ]\n}", "options": {"raw": {"language": "json"}}},
+            "url": {"raw": "{{baseUrl}}/api/reservas", "host": ["{{baseUrl}}"], "path": ["api", "reservas"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Mis Reservas",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/reservas/mis-reservas", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "mis-reservas"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Detalle Reserva",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/reservas/1", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "1"]}
+          },
+          "response": []
+        },
+        {
+          "name": "Cancelar Reserva",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/api/reservas/1", "host": ["{{baseUrl}}"], "path": ["api", "reservas", "1"]}
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Administrador/Empleado",
+      "item": [
+        {
+          "name": "Vuelos",
+          "item": [
+            {
+              "name": "Crear Vuelo",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"numeroVuelo\": \"AT100\",\n  \"origen\": \"BOG\",\n  \"destino\": \"MDE\",\n  \"fechaSalida\": \"2024-07-01T08:00:00Z\",\n  \"fechaLlegada\": \"2024-07-01T09:00:00Z\",\n  \"precio\": 250.0,\n  \"aeronaveId\": 1\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/vuelos", "host": ["{{baseUrl}}"], "path": ["api", "vuelos"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Vuelo",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"numeroVuelo\": \"AT100\",\n  \"origen\": \"BOG\",\n  \"destino\": \"MDE\",\n  \"fechaSalida\": \"2024-07-01T08:00:00Z\",\n  \"fechaLlegada\": \"2024-07-01T09:00:00Z\",\n  \"precio\": 250.0,\n  \"aeronaveId\": 1\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/vuelos/1", "host": ["{{baseUrl}}"], "path": ["api", "vuelos", "1"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Cambiar Estado Vuelo",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"estado\": \"CANCELADO\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/vuelos/1/estado", "host": ["{{baseUrl}}"], "path": ["api", "vuelos", "1", "estado"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Vuelos por Estado",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/vuelos/estado/PROGRAMADO", "host": ["{{baseUrl}}"], "path": ["api", "vuelos", "estado", "PROGRAMADO"]}
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Reservas",
+          "item": [
+            {
+              "name": "Listar Reservas",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/reservas", "host": ["{{baseUrl}}"], "path": ["api", "reservas"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Pasajeros por Vuelo",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/pasajeros/vuelo/1", "host": ["{{baseUrl}}"], "path": ["api", "pasajeros", "vuelo", "1"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Pasajeros por Reserva",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/pasajeros/reserva/1", "host": ["{{baseUrl}}"], "path": ["api", "pasajeros", "reserva", "1"]}
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Aeronaves",
+          "item": [
+            {
+              "name": "Listar Aeronaves",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/aeronaves", "host": ["{{baseUrl}}"], "path": ["api", "aeronaves"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Detalle Aeronave",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/aeronaves/1", "host": ["{{baseUrl}}"], "path": ["api", "aeronaves", "1"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Aeronave",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"modelo\": \"Boeing 737\",\n  \"capacidad\": 180,\n  \"codigo\": \"B737-800\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/aeronaves", "host": ["{{baseUrl}}"], "path": ["api", "aeronaves"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Aeronave",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"modelo\": \"Boeing 737\",\n  \"capacidad\": 180,\n  \"codigo\": \"B737-800\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/aeronaves/1", "host": ["{{baseUrl}}"], "path": ["api", "aeronaves", "1"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Aeronave",
+              "request": {
+                "method": "DELETE",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/aeronaves/1", "host": ["{{baseUrl}}"], "path": ["api", "aeronaves", "1"]}
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Usuarios",
+          "item": [
+            {
+              "name": "Listar Usuarios",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/usuarios", "host": ["{{baseUrl}}"], "path": ["api", "usuarios"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Usuarios por Rol",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/usuarios/rol/CLIENTE", "host": ["{{baseUrl}}"], "path": ["api", "usuarios", "rol", "CLIENTE"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Empleado",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"name\": \"Ana López\",\n  \"email\": \"ana@example.com\",\n  \"password\": \"secreto\",\n  \"role\": \"EMPLEADO\",\n  \"phone\": \"3009876543\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/usuarios/empleado", "host": ["{{baseUrl}}"], "path": ["api", "usuarios", "empleado"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Detalle Usuario",
+              "request": {
+                "method": "GET",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/usuarios/1", "host": ["{{baseUrl}}"], "path": ["api", "usuarios", "1"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Usuario",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"name\": \"Ana López\",\n  \"email\": \"ana@example.com\",\n  \"password\": \"secreto\",\n  \"role\": \"EMPLEADO\",\n  \"phone\": \"3009876543\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/usuarios/1", "host": ["{{baseUrl}}"], "path": ["api", "usuarios", "1"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Usuario",
+              "request": {
+                "method": "DELETE",
+                "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+                "url": {"raw": "{{baseUrl}}/api/usuarios/1", "host": ["{{baseUrl}}"], "path": ["api", "usuarios", "1"]}
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Reportes",
+          "item": [
+            {
+              "name": "Vuelos más reservados",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"fechaInicio\": \"2024-01-01\",\n  \"fechaFin\": \"2024-12-31\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/reportes/vuelos-mas-reservados", "host": ["{{baseUrl}}"], "path": ["api", "reportes", "vuelos-mas-reservados"]}
+              },
+              "response": []
+            },
+            {
+              "name": "Ingresos",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {"key": "Authorization", "value": "Bearer {{token}}"},
+                  {"key": "Content-Type", "value": "application/json"}
+                ],
+                "body": {"mode": "raw", "raw": "{\n  \"fechaInicio\": \"2024-01-01\",\n  \"fechaFin\": \"2024-12-31\"\n}", "options": {"raw": {"language": "json"}}},
+                "url": {"raw": "{{baseUrl}}/api/reportes/ingresos", "host": ["{{baseUrl}}"], "path": ["api", "reportes", "ingresos"]}
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
